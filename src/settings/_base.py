@@ -13,6 +13,7 @@ from django.core.exceptions         import ImproperlyConfigured
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR                = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+print(f"BASE_DIR = {BASE_DIR}")
 EXTERNAL_BASE           = os.path.join(BASE_DIR, "externals")
 EXTERNAL_LIBS_PATH      = os.path.join(EXTERNAL_BASE, "libs")
 EXTERNAL_APPS_PATH      = os.path.join(EXTERNAL_BASE, "apps")
@@ -37,8 +38,9 @@ SECRET_KEY              = get_secret('DJANGO_SECRET_KEY')
 DEBUG                   = True
 
 ALLOWED_HOSTS           = [
-    "127.0.0.1",
-    "0.0.0.0",
+      "127.0.0.1"
+    , "0.0.0.0"
+    , "localhost"
 ]
 
 
@@ -72,10 +74,10 @@ ROOT_URLCONF            = 'src.urls'
 
 TEMPLATES               = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'src', 'templates')],
-        'APP_DIRS': True,
-        'OPTIONS': {
+        'BACKEND'       : 'django.template.backends.django.DjangoTemplates',
+        'DIRS'          : [os.path.join(BASE_DIR, 'src', 'templates')],
+        'APP_DIRS'      : True,
+        'OPTIONS'       : {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
@@ -133,11 +135,14 @@ LOCALE_PATHS            = [
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATICFILES_DIRS        = [
-    os.path.join(BASE_DIR, 'src', 'site_static'),
+      os.path.join(BASE_DIR, 'src', 'site_static')
 ]
 
-STATIC_URL              = f'/static/'
+print(STATICFILES_DIRS)
+
 STATIC_ROOT             = os.path.join(BASE_DIR, 'static')
+STATIC_URL              = f'static/'
+print(STATIC_ROOT)
 
 MEDIA_URL               = '/media/'
 MEDIA_ROOT              = os.path.join(BASE_DIR, 'media')
